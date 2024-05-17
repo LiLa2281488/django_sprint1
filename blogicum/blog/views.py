@@ -44,17 +44,13 @@ posts = [
     },
 ]
 
-posts_id = {
-    "0": posts[0]["id"],
-    "1": posts[1]["id"],
-    "2": posts[2]["id"]
-}
+posts_id = {key: posts[key]["id"] for key in range(0, len(posts))}
 
 
 def post_detail(request, id):
     try:
         template = "blog/detail.html"
-        context = {"post": posts[posts_id[str(id)]]}
+        context = {"post": posts[posts_id[id]]}
     except IndexError:
         raise Http404("Id does not exist")
     return render(request, template, context)

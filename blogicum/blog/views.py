@@ -44,7 +44,7 @@ posts = [
     },
 ]
 
-posts_id = {key: posts[key]["id"] for key in range(0, len(posts))}
+posts_id = {posts[value]["id"]: value for value in range(0, len(posts))}
 
 
 def post_detail(request, id):
